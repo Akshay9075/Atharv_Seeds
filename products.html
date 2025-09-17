@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Athrav Agro Seeds</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-green: #2e7d32;
+      --secondary-green: #4CAF50;
+      --accent-orange: #ff9800;
+      --light-bg: #f8f9fa;
+      --dark-text: #333;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: var(--dark-text);
+      padding-top: 80px;
+      background-color: var(--light-bg);
+    }
+    
+    /* Navbar */
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background-color: white;
+      padding: 5px 15px;
+      height: auto;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-green);
+    }
+    
+    .navbar-brand span {
+      color: var(--accent-orange);
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      color: var(--primary-green);
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent-orange);
+    }
+    
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                  url('https://cdn.pixabay.com/photo/2017/06/12/19/02/spring-onion-2396471_640.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 0;
+      height: 45vh;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .page-header h1 {
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .breadcrumb {
+      justify-content: center;
+      background: transparent;
+      margin-bottom: 0;
+    }
+    
+    /* Products Section */
+    .products-section {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      color: var(--primary-green);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-orange);
+      border-radius: 2px;
+    }
+    
+    /* Product Cards */
+    .product-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      height: 100%;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .product-card img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: 250px;
+      object-fit: contain;
+      padding: 15px;
+    }
+    
+    .card-body {
+      padding: 25px;
+    }
+    
+    .card-title {
+      color: var(--primary-green);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .product-category {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+    }
+    
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    
+    .product-features li {
+      margin-bottom: 8px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .product-features li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-green);
+      font-weight: bold;
+    }
+    
+    /* Expandable Details */
+    .product-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    
+    .product-details.expanded {
+      max-height: 1000px;
+    }
+    
+    .details-btn {
+      background: transparent;
+      border: 2px solid var(--primary-green);
+      color: var(--primary-green);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .details-btn:after {
+      content: '▼';
+      font-size: 0.8rem;
+      margin-left: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .details-btn.expanded:after {
+      transform: rotate(180deg);
+    }
+    
+    .details-btn:hover {
+      background: var(--primary-green);
+      color: white;
+    }
+    
+    /* Product Details Content */
+    .details-content {
+      padding: 20px 0;
+    }
+    
+    .detail-item {
+      margin-bottom: 15px;
+    }
+    
+    .detail-label {
+      font-weight: 600;
+      color: var(--primary-green);
+      margin-bottom: 5px;
+    }
+    
+    /* Add to Cart Button */
+    .add-to-cart-btn {
+      background: var(--accent-orange);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s;
+      width: 100%;
+      margin-top: 15px;
+    }
+    
+    .add-to-cart-btn:hover {
+      background: #e68900;
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-green);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    footer h5 {
+      font-weight: 700;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    footer h5::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-orange);
+    }
+    
+    footer a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    footer a:hover {
+      color: white;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background: var(--accent-orange);
+      transform: translateY(-3px);
+    }
+    
+    .navbar-brand img {
+      height: 60px;
+      width: auto;
+      margin-right: 8px;
+    }
+    
+    .navbar-collapse {
+      background: white;
+      padding: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-brand img {
+        height: 35px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .navbar-brand img {
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+<!-- navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.jpg" alt="Kanda Seeds Logo">
+      Athrav<span> Agro Seeds</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="display-4">Our Premium Products</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+         <!--  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Products</li> -->
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="container">
+      <h2 class="section-title">Quality Onion Seeds</h2>
+      
+      <!-- Products Grid -->
+      <div class="row" id="products-container">
+        <!-- Product 1 - Red Onion -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="red">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg" alt="Red Onion Seeds">
+            <div class="card-body">
+              <span class="product-category">Red Onion Seeds</span>
+              <h3 class="card-title">Red Prime</h3>
+              <p class="card-text">High-yield variety, suitable for all soil types. These seeds produce deep red bulbs with excellent storage quality.</p>
+              
+              <ul class="product-features">
+                <li>95% Germination Rate</li>
+                <li>Disease Resistant</li>
+                <li>120-130 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-1">View Details</button>
+              
+              <div class="product-details" id="details-1">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Commercial farming, storage, and export</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Deep red color, globular shape, firm texture</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Rabi season (October-November)</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>25-30 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>100g, 250g, 500g, 1kg</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹450 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 - Yellow Onion -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="yellow">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg" alt="Yellow Onion Seeds">
+            <div class="card-body">
+              <span class="product-category">Yellow Onion Seeds</span>
+              <h3 class="card-title">Golden Harvest</h3>
+              <p class="card-text">Known for strong flavor and excellent storage ability. Yellow onions are widely used in cooking and commercial farming.</p>
+              
+              <ul class="product-features">
+                <li>90% Germination Rate</li>
+                <li>Excellent Storage Life</li>
+                <li>100-110 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-2">View Details</button>
+              
+              <div class="product-details" id="details-2">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Culinary use, processing, commercial farming</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Golden yellow color, firm, strong flavor</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Rabi season (Oct-Nov)</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>25-30 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>100g, 250g, 500g</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹420 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 - Hybrid -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="hybrid">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg" alt="Hybrid Onion Seeds">
+            <div class="card-body">
+              <span class="product-category">Hybrid Seeds</span>
+              <h3 class="card-title">Hybrid Gold</h3>
+              <p class="card-text">Best choice for commercial farming with disease resistance. These hybrids offer uniform size and higher yields.</p>
+              
+              <ul class="product-features">
+                <li>98% Germination Rate</li>
+                <li>High Disease Resistance</li>
+                <li>100-110 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-3">View Details</button>
+              
+              <div class="product-details" id="details-3">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Commercial farming, processing, and high-density planting</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Golden brown color, uniform size, firm texture</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Both Rabi and Kharif seasons</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>30-35 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>50g, 100g, 250g</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹550 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 4 - Red Onion -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="red">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg" alt="Red Onion Seeds">
+            <div class="card-body">
+              <span class="product-category">Red Onion Seeds</span>
+              <h3 class="card-title">Red Diamond</h3>
+              <p class="card-text">Early maturing variety with deep red color and excellent pungency. Ideal for domestic markets.</p>
+              
+              <ul class="product-features">
+                <li>90% Germination Rate</li>
+                <li>Early Maturing</li>
+                <li>95-105 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-4">View Details</button>
+              
+              <div class="product-details" id="details-4">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Domestic markets, early season harvest</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Deep red color, medium size, good pungency</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Late Kharif season (July-August)</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>20-25 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>100g, 250g, 500g</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹400 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 5 - White Onion -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="white">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg">
+            <div class="card-body">
+              <span class="product-category">White Onion Seeds</span>
+              <h3 class="card-title">Crystal White</h3>
+              <p class="card-text">High-yielding white onion with excellent storage qualities and mild flavor. Perfect for export markets.</p>
+              
+              <ul class="product-features">
+                <li>94% Germination Rate</li>
+                <li>Long Storage Life</li>
+                <li>125-135 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-5">View Details</button>
+              
+              <div class="product-details" id="details-5">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Export markets, long-term storage</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Bright white color, large size, mild flavor</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Rabi season (October-November)</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>28-32 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>250g, 500g, 1kg</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹480 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 6 - Hybrid -->
+        <div class="col-md-6 col-lg-4 mb-4" data-category="hybrid">
+          <div class="product-card">
+            <img src="https://tiimg.tistatic.com/fp/2/008/947/dark-red-onion-seeds-245.jpg" alt="Hybrid Onion Seeds">
+            <div class="card-body">
+              <span class="product-category">Hybrid Seeds</span>
+              <h3 class="card-title">Hybrid Supreme</h3>
+              <p class="card-text">Premium hybrid with exceptional uniformity and high yield potential. Resistant to major diseases.</p>
+              
+              <ul class="product-features">
+                <li>97% Germination Rate</li>
+                <li>Exceptional Uniformity</li>
+                <li>105-115 Days Maturity</li>
+              </ul>
+              
+              <button class="details-btn" data-target="details-6">View Details</button>
+              
+              <div class="product-details" id="details-6">
+                <div class="details-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Best For</div>
+                    <p>Premium markets, high-value production</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Bulb Characteristics</div>
+                    <p>Uniform size, golden brown color, excellent firmness</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Sowing Season</div>
+                    <p>Both Rabi and Kharif seasons</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Yield Potential</div>
+                    <p>32-38 tons per hectare</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Package Size</div>
+                    <p>50g, 100g, 250g</p>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Price</div>
+                    <p>₹600 per 100g</p>
+                  </div>
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5>Athrav Agro Seeds</h5>
+          <p>Providing high-quality onion seeds to farmers for over two decades. Our mission is to support agriculture with reliable, high-yielding seed varieties.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Farm Road, Agricultural Zone</li>
+            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope me-2"></i> info@athravagroseeds.com</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+      
+      <div class="text-center">
+        <p>&copy; 2023 Athrav Agro Seeds. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Functionality for expandable details
+    document.querySelectorAll('.details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const detailsSection = document.getElementById(targetId);
+        
+        // Toggle expanded class
+        this.classList.toggle('expanded');
+        detailsSection.classList.toggle('expanded');
+        
+        // Change button text
+        if (this.classList.contains('expanded')) {
+          this.textContent = 'Hide Details';
+        } else {
+          this.textContent = 'View Details';
+        }
+      });
+    });
+    
+    // // Add to Cart functionality
+    // document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    //   button.addEventListener('click', function() {
+    //     const productCard = this.closest('.product-card');
+    //     const productName = productCard.querySelector('.card-title').textContent;
+        
+    //     // Show confirmation message
+    //     alert(`${productName} has been added to your cart!`);
+        
+    //     // You can add actual cart functionality here
+    //   });
+    // });
+  </script>
+</body>
+</html>

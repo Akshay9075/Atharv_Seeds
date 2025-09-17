@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanda Seed Company - Premium Onion Seeds</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-green: #2e7d32;
+      --secondary-green: #4CAF50;
+      --accent-orange: #ff9800;
+      --light-bg: #f8f9fa;
+      --dark-text: #333;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: var(--dark-text);
+      padding-top: 75px;
+    }
+     
+    /* Navbar */
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background-color: white;
+      height: 75px;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-green);
+    }
+    
+    .navbar-brand span {
+      color: var(--accent-orange);
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      color: var(--primary-green);
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent-orange);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                  url('images/slider.png');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      color: white;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+    }
+    
+    .hero h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hindi-tagline {
+      color: var(--accent-orange);
+      font-weight: 600;
+      display: block;
+      margin-top: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn {
+      background-color:none;
+      border:solid 2px orange;
+      padding: 12px 30px;
+      font-weight: 600;
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #e68900;
+      border-color: #e68900;
+      transform: translateY(-2px);
+    }
+    
+    /* Products Section */
+    .products {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      color: var(--primary-green);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-orange);
+      border-radius: 2px;
+    }
+    
+    .product-card {
+      border: none;
+      border-radius: 70px 15px 70px 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      height: 100%;
+       box-shadow: 0 15px 40px rgba(15,0,0,0.15);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(15,0,0,0.15);
+  border: 2px solid rgba(255, 152, 0, 1.0); 
+    }
+    
+    .product-img {
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .card-body {
+      padding: 25px;
+    }
+    
+    .card-title {
+      color: var(--primary-green);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+    .features {
+  padding: 80px 0;
+  position: relative;
+
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(76, 175, 80, 0.08) 0, rgba(76,175,80,0.08) 120px, transparent 121px),
+    radial-gradient(circle at 90% 20%, rgba(255, 152, 0, 0.06) 0, rgba(255,152,0,0.06) 140px, transparent 141px),
+    radial-gradient(circle at 20% 90%, rgba(46, 125, 50, 0.05) 0, rgba(46,125,50,0.05) 160px, transparent 161px),
+    url("");
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: auto, auto, auto, cover;
+  background-position: 10% 10%, 90% 20%, 20% 90%, center;
+}
+
+/* White feature boxes */
+.feature-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* feature icons green */
+.feature-box .feature-icon i {
+  color: #28a745;
+  font-size: 2rem;
+}
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-green);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    footer h5 {
+      font-weight: 700;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    footer h5::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-orange);
+    }
+    
+    footer a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    footer a:hover {
+      color: white;
+    }
+/* Mission Section - Redesigned */
+.mission {
+  padding: 80px 0;
+  margin: 0;                
+  position: relative;
+  overflow: hidden;
+
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(76, 175, 80, 0.08) 0, rgba(76,175,80,0.08) 120px, transparent 121px),
+    radial-gradient(circle at 90% 20%, rgba(255, 152, 0, 0.06) 0, rgba(255,152,0,0.06) 140px, transparent 141px),
+    radial-gradient(circle at 20% 90%, rgba(46, 125, 50, 0.05) 0, rgba(46,125,50,0.05) 160px, transparent 161px),
+    url("");
+  background-repeat: no-repeat;
+  background-size: auto, auto, auto, cover;
+  background-position: 10% 10%, 90% 20%, 20% 90%, top;
+}
+
+/* Dark overlay for depth */
+.mission::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* Darkness control */
+  z-index: 1;
+}
+
+/* Container to stay above overlay */
+.mission-container {
+  position: relative;
+  z-index: 2;
+}
+
+.mission-bg-pattern {
+  display: none;
+}
+
+/* Mission content box with light transparency */
+.mission-content {
+  background: rgba(255, 255, 255, 0.8); /* हलका transparent white */
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(46, 125, 50, 0.1);
+  padding: 50px;
+  position: relative;
+  color: #333;
+}
+
+
+    .mission-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
+    }
+    
+    .mission-icon i {
+      font-size: 36px;
+      color: white;
+    }
+    
+    .mission h2 {
+      color: var(--primary-green);
+      font-weight: 700;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .mission h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent-orange);
+      border-radius: 2px;
+    }
+    
+    .mission p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    
+    .mission-image {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      min-height: 300px;
+    }
+    
+    .mission-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: transparent;
+    }
+    
+    .mission-image:before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      bottom: -15px;
+      left: -15px;
+      border: 2px solid var(--accent-orange);
+      border-radius: 20px;
+      opacity: 0.3;
+      z-index: 1;
+      background: transparent;
+    }
+    
+    .mission-values {
+      margin-top: 40px;
+    }
+    
+    .value-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .value-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(46, 125, 50, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .value-icon i {
+      color: var(--primary-green);
+      font-size: 20px;
+    }
+    
+    .value-text h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: var(--primary-green);
+    }
+    
+    .value-text p {
+      font-size: 16px;
+      margin-bottom: 0;
+      color: #666;
+    }
+    
+    @media (max-width: 992px) {
+      .mission-content {
+        padding: 30px;
+      }
+      
+      .mission-image {
+        margin-top: 40px;
+        min-height: 250px;
+      }
+    }
+
+
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background: var(--accent-orange);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 0;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hindi-tagline {
+        font-size: 1.2rem;
+      }
+    }
+    .navbar-brand img {
+  height: 70px;   /* default for desktop */
+  width: auto;
+  margin-right: 8px;
+}
+/* Navbar height auto कर */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: white;
+  padding: 5px 15px;   /* height instead of fixed */
+  height: 70;        /* fix: auto height */
+}
+.navbar-brand img {
+  height: 60px;   /* desktop */
+  width: auto;
+  margin-right: 8px;
+}
+.navbar-collapse {
+  background: white;   /* dropdown white */
+  padding: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar-brand img {
+    height: 35px;   /* mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand img {
+    height: 30px;   /* very small screens */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar-brand img {
+    height: 30px;   /* small mobile size */
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+ <!-- navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.jpg" alt="Kanda Seeds Logo">
+      Athrav<span> Agro Seeds</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1 class="display-4">High Quality Onion Seeds for Better Yield</h1>
+      <span class="hindi-tagline"></span>
+      <p class="lead">We are committed to providing farmers with premium quality onion seeds. Our seeds ensure high germination, healthy crops, and better productivity.</p>
+      <a href="products.html" class="btn">Explore Our Products</a>
+    </div>
+
+
+
+
+  </section>
+  
+  <!-- Our Mission Section - Redesigned -->
+  <section class="features">
+    <div class="mission-bg-pattern"></div>
+    <div class="container mission-container">
+      <div class="mission-content">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="mission-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <h2>Our Mission</h2>
+            <p>𝖠𝗍 𝖠𝗍𝗁𝗋𝖺𝗏 𝖠𝗀𝗋𝗈 𝖲𝖾𝖾𝖽𝗌, 𝗈𝗎𝗋 𝗆𝗂𝗌𝗌𝗂𝗈𝗇 𝗂𝗌 𝗍𝗈 𝖾𝗆𝗉𝗈𝗐𝖾𝗋 𝖿𝖺𝗋𝗆𝖾𝗋𝗌 𝗐𝗂𝗍𝗁 𝖺𝖼𝖼𝖾𝗌𝗌 𝗍𝗈 𝗉𝗋𝖾𝗆𝗂𝗎𝗆 𝗊𝗎𝖺𝗅𝗂𝗍𝗒 𝗈𝗇𝗂𝗈𝗇 𝗌𝖾𝖾𝖽𝗌 𝗍𝗁𝖺𝗍 𝗀𝗎𝖺𝗋𝖺𝗇𝗍𝖾𝖾 𝗁𝗂𝗀𝗁 𝗀𝖾𝗋𝗆𝗂𝗇𝖺𝗍𝗂𝗈𝗇, 𝗁𝖾𝖺𝗅𝗍𝗁𝗒 𝖼𝗋𝗈𝗉𝗌, 𝖺𝗇𝖽 𝖻𝖾𝗍𝗍𝖾𝗋 𝗒𝗂𝖾𝗅𝖽. 𝖶𝖾 𝖺𝗋𝖾 𝖽𝖾𝖽𝗂𝖼𝖺𝗍𝖾𝖽 𝗍𝗈 𝗌𝗎𝗉𝗉𝗈𝗋𝗍𝗂𝗇𝗀 𝗌𝗎𝗌𝗍𝖺𝗂𝗇𝖺𝖻𝗅𝖾 𝖿𝖺𝗋𝗆𝗂𝗇𝗀 𝗉𝗋𝖺𝖼𝗍𝗂𝖼𝖾𝗌 𝖺𝗇𝖽 𝗂𝗆𝗉𝗋𝗈𝗏𝗂𝗇𝗀 𝗍𝗁𝖾 𝗅𝗂𝗏𝖾𝗅𝗂𝗁𝗈𝗈𝖽 𝗈𝖿 𝖿𝖺𝗋𝗆𝖾𝗋𝗌 𝖺𝖼𝗋𝗈𝗌𝗌 𝗍𝗁𝖾 𝖼𝗈𝗎𝗇𝗍𝗋𝗒.</p>
+            
+            <div class="mission-values">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="value-text">
+                  <h4>Quality Focus</h4>
+                  <p>Delivering the highest quality seeds for optimal yield</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <div class="value-text">
+                  <h4>Farmer Partnership</h4>
+                  <p>Building long-term relationships with farming communities</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <div class="value-text">
+                  <h4>Sustainability</h4>
+                  <p>Promoting environmentally responsible farming practices</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="mission-image">
+              <img src="https://static.vecteezy.com/system/resources/previews/041/680/515/non_2x/ai-generated-onion-realistic-with-white-background-high-quality-ultra-hd-photo.jpg" alt="Our Mission - Farmers in field">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title display-5">Our Products</h2>
+      <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="product-card">
+            <img src="images/product1.webp" class="card-img-top product-img" alt="Red Onion Seeds">
+            <div class="card-body">
+              <h3 class="card-title">Red Onion Seeds</h3>
+              <p class="card-text">High-yield variety, suitable for all soil types. These seeds produce deep red bulbs with excellent storage quality.</p>
+              <!-- <a href="#" class="btn btn-outline-primary">View Details</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="product-card">
+            <img src="images/produc2.jpg" class="card-img-top product-img" alt="White Onion Seeds">
+            <div class="card-body">
+              <h3 class="card-title"> Yellow Onion Seeds</h3>
+              <p class="card-text">Popular for its long shelf life and quality bulbs. These white onions have a mild flavor and are perfect for salads.</p>
+              <!-- <a href="#" class="btn btn-outline-primary">View Details</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="product-card">
+            <img src="images/product11.jpg" class="card-img-top product-img" alt="Hybrid Onion Seeds">
+            <div class="card-body">
+              <h3 class="card-title">Hybrid Onion Seeds</h3>
+              <p class="card-text">Best choice for commercial farming with disease resistance. These hybrids offer uniform size and higher yields.</p>
+              <!-- <a href="#" class="btn btn-outline-primary">View Details</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title display-5">Why Choose Our Seeds</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <h3>High Germination Rate</h3>
+            <p>Our seeds have a 95%+ germination rate, ensuring more plants per packet and reduced waste.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Disease Resistant</h3>
+            <p>Specially bred to resist common onion diseases, reducing crop loss and pesticide use.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>Quick Delivery</h3>
+            <p>We ensure prompt delivery of seeds to maintain their viability and quality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5>Kanda Seed Company</h5>
+          <p>Providing high-quality onion seeds to farmers for over two decades. Our mission is to support agriculture with reliable, high-yielding seed varieties.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Farm Road, Agricultural Zone</li>
+            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope me-2"></i> info@kandaseeds.com</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+      
+      <div class="text-center">
+        <p>&copy; 2023 Kanda Seed Company. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
